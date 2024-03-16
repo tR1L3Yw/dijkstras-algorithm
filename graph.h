@@ -8,7 +8,7 @@
 
 #include<string>
 
-using namespace std;
+using namespace std; // ugly nast ew bad
 struct Edge {
     //std::
     string source;
