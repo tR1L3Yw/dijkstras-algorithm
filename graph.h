@@ -8,11 +8,10 @@
 
 #include<string>
 
-using namespace std; // ugly nast ew bad
 struct Edge {
     //std::
-    string source;
-    string destination;
+    std::string source;
+    std::string destination;
     int weight;
     
     Edge()
@@ -22,7 +21,7 @@ struct Edge {
         weight = 0;
     }
 
-    Edge( string src, string dst, int wt )
+    Edge( std::string src, std::string dst, int wt )
     {
         source = src;
         destination = dst;
@@ -40,10 +39,10 @@ struct Edge {
 #endif
 
 struct VertexTrack{
-    string name;
+    std::string name;
     int targettings;
 
-    VertexTrack( string n, int t )
+    VertexTrack( std::string n, int t )
     {
         name = n;
         targettings = t;
@@ -51,7 +50,7 @@ struct VertexTrack{
 };
 
 struct Vertex{
-    string id;
+    std::string id;
     int outDegree;
     Edge** edges;
 
@@ -61,7 +60,7 @@ struct Vertex{
 
     Vertex() {}    
 
-    Vertex(int outDeg, string name) {
+    Vertex(int outDeg, std::string name) {
         id = name;
         outDegree = outDeg;
         edges = new Edge*[outDeg];
@@ -125,9 +124,9 @@ public:
     
     Vertex* getVertex( int index );
     
-    int getVertexIndex( string name );
+    int getVertexIndex( std::string name );
     
-    void dijkstrasAlgorithm ( string startVertex, string endVertex );
+    void dijkstrasAlgorithm ( std::string startVertex, std::string endVertex );
     
 };
 
