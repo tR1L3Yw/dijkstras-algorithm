@@ -7,12 +7,15 @@
 #include <climits>
 #include <string>
 
-// BEGIN GRAPH COMPONENT DECS & DEFINITIONS
+// BEGIN GRAPH COMPONENTS
 // fundamental structs for a weighted & directed graph
-// sans interaction or navigation; only building blocks
-// in order: Edge, VertexTrack, & Vertex
+// defines building blocks + minimal navigation required for djikstra's algorithm
+// in order: Edge, VertexTrack (navigation), & Vertex
 
+// begin Edge struc
+// This struct describes a single path between two vertices
 struct Edge {
+    // attributes
     std::string source;        // source and destination tags to indicate direction
     std::string destination;
     int weight;                // weight in this application denotes distance
@@ -37,19 +40,27 @@ struct Edge {
         destination = e2->destination;
         weight = e2->weight;
     }
-};
+}; // end of Edge struct 
 
-struct VertexTrack{
-    std::string name;
-    int targettings;
 
-    VertexTrack( std::string n, int t )
-    {
+// begin VertexTrack struct
+// This struct monitors a vertex and counts its In-Degrees
+// separate from and after Vertex appearances as a destination from other vertices
+
+struct VertexTrack {     
+    std::string name;    // name of tracked vertex
+    int targettings;     // # vertices with edge dest at named vertex
+
+    // parameterized constuctor
+    VertexTrack( std::string n, int t ){
         name = n;
         targettings = t;
     }
-};
+}; // end of VertexTrack struct
 
+
+// begin Vertex struct
+// this struct describes a 
 struct Vertex{
     std::string id;
     int outDegree;
