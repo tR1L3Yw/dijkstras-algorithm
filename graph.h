@@ -1,42 +1,43 @@
+#ifndef GRAPH_H
+#define GRAPH_H
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <climits>
+#include <string>
 
-#ifndef GRAPH_H
-#define GRAPH_H
-
-#include<string>
+// BEGIN GRAPH COMPONENT DECS & DEFINITIONS
+// fundamental structs for a weighted & directed graph
+// sans interaction or navigation; only building blocks
+// in order: Edge, VertexTrack, & Vertex
 
 struct Edge {
-    //std::
-    std::string source;
+    std::string source;        // source and destination tags to indicate direction
     std::string destination;
-    int weight;
-    
-    Edge()
-    {
+    int weight;                // weight in this application denotes distance
+
+    // default constuctor
+    Edge() {
         source = "";
         destination = "";
         weight = 0;
     }
 
-    Edge( std::string src, std::string dst, int wt )
-    {
+    // parameterized constuctor
+    Edge( std::string src, std::string dst, int wt ) {
         source = src;
         destination = dst;
         weight = wt;
     }
 
-    void operator=( Edge* e2)
-    {
+    // assignment operator ( copy constructor deemed unnecessary )
+    void operator=( Edge* e2) {
         source = e2->source;
         destination = e2->destination;
         weight = e2->weight;
     }
 };
-
-#endif
 
 struct VertexTrack{
     std::string name;
@@ -130,3 +131,4 @@ public:
     
 };
 
+#endif
