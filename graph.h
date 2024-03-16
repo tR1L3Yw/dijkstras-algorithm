@@ -12,8 +12,9 @@
 // defines building blocks + minimal navigation required for djikstra's algorithm
 // in order: Edge, VertexTrack (navigation), & Vertex
 
-// begin Edge struc
+// begin Edge struct
 // This struct describes a single path between two vertices
+
 struct Edge {
     // attributes
     std::string source;        // source and destination tags to indicate direction
@@ -22,7 +23,7 @@ struct Edge {
 
     // default constuctor
     Edge() {
-        source = "";
+        source = "";           
         destination = "";
         weight = 0;
     }
@@ -34,8 +35,8 @@ struct Edge {
         weight = wt;
     }
 
-    // assignment operator ( copy constructor deemed unnecessary )
-    void operator=( Edge* e2) {
+    // assignment operator 
+    void operator=( Edge* e2 ) {
         source = e2->source;
         destination = e2->destination;
         weight = e2->weight;
@@ -45,14 +46,14 @@ struct Edge {
 
 // begin VertexTrack struct
 // This struct monitors a vertex and counts its In-Degrees
-// separate from and after Vertex appearances as a destination from other vertices
+// edges with destination at object's named vertex
 
 struct VertexTrack {     
-    std::string name;    // name of tracked vertex
-    int targettings;     // # vertices with edge dest at named vertex
+    std::string name;    // tag for tracked vertex
+    int targettings;     // count of In-Degrees
 
     // parameterized constuctor
-    VertexTrack( std::string n, int t ){
+    VertexTrack( std::string n, int t ) {
         name = n;
         targettings = t;
     }
@@ -60,11 +61,16 @@ struct VertexTrack {
 
 
 // begin Vertex struct
-// this struct describes a 
-struct Vertex{
-    std::string id;
-    int outDegree;
-    Edge** edges;
+// this struct describes Vertices as building 
+// blocks of the actual graph abstraction.
+// Only Out-Degrees are an attribute as this is 
+// all that's needed from our pal dijkstra
+
+struct Vertex {
+    // attributes
+    std::string id;        // tag for vertex id 
+    int outDegree;         // number of destinations from vertex
+    Edge** edges;          // dynamic array of pointers to outbound edges
 
     bool seen;
     int distance;
