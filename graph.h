@@ -45,8 +45,8 @@ struct Edge {
 
 
 // begin VertexTrack struct
-// This struct monitors a vertex and counts its In-Degrees
-// edges with destination at object's named vertex
+// This struct holds a vertex id and count of its In-Degrees...
+// ...the number of edges with destination at object's named vertex
 
 struct VertexTrack {     
     std::string name;    // tag for tracked vertex
@@ -61,10 +61,12 @@ struct VertexTrack {
 
 
 // begin Vertex struct
-// this struct describes Vertices as building 
-// blocks of the actual graph abstraction.
-// Only Out-Degrees are an attribute as this is 
-// all that's needed from our pal dijkstra
+// This struct describes Vertices as building blocks of the actual graph abstraction.
+// Out-Degrees and NOT In-Degrees are attributed as this is all that's needed from our pal dijkstra.
+// A dynamic array of Edge struct pointers is also necessary for processing along with
+// a boolean indicator set to false after its first input data point appearance,
+// an int measure of distance from the source of desired shortest path and a 
+// pointer ( only used in attempted navigation ) to the vertex last processed 
 
 struct Vertex {
     // attributes
@@ -72,9 +74,9 @@ struct Vertex {
     int outDegree;         // number of destinations from vertex
     Edge** edges;          // dynamic array of pointers to outbound edges
 
-    bool seen;
-    int distance;
-    Vertex* lastJump;
+    bool seen;             // set to false after graph construction
+    int distance;          // distance from desired path source
+    Vertex* lastJump;      // In-Degree vertex last used in processing
 
     Vertex() {}    
 
