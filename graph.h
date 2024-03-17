@@ -78,8 +78,6 @@ struct Vertex {
     int distance;          // distance from desired path source
     Vertex* lastJump;      // In-Degree vertex last used in processing
 
-    Vertex() {}    
-
     Vertex(int outDeg, std::string name) {
         id = name;
         outDegree = outDeg;
