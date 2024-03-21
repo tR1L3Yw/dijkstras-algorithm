@@ -1,23 +1,22 @@
 DRIVER_NAME = main
 SUBMIT_NAME = submit
+CXXFLAGS = -std=c++11 -Wall -Wextra
 
 
-p4: $(DRIVER_NAME).o graph.o
-	g++ -o p4 $(DRIVER_NAME).o graph.o
+p4: main.o graphComp.o MinHeap.o graphBuildOps.o
+	g++ $(CXXFLAGS) -o p4 main.o graphComp.o MinHeap.o graphBuildOps.o
 
-$(DRIVER_NAME).o: $(DRIVER_NAME).cpp $(DRIVER_NAME).h graph.h
-	g++ -c $(DRIVER_NAME).cpp
+main.o: main.cpp main.h graphComp.h MinHeap.h graphBuildOps.h
+	g++ $(CXXFLAGS) -c main.cpp
 
-graph.o: graph.cpp graph.h
-	g++ -c graph.cpp
+graphComp.o: graphComp.cpp graphComp.h
+	g++ $(CXXFLAGS) -c graphComp.cpp
 
+MinHeap.o: MinHeap.cpp MinHeap.h
+	g++ $(CXXFLAGS) -c MinHeap.cpp
 
-.PHONY: submit clean
-
-submit:
-	rm -f $(SUBMIT_NAME).zip
-	zip $(SUBMIT_NAME).zip Makefile $(DRIVER_NAME).cpp $(DRIVER_NAME).h graph.cpp graph.h
-
+graphBuildOps.o: graphBuildOps.cpp graphBuildOps.h
+	g++ $(CXXFLAGS) -c graphBuildOps.cpp
 
 clean: 
 	rm -f p4 a.out *.o

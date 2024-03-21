@@ -4,6 +4,7 @@ using namespace std;
 
 int main( int argc, const char* argv[] )
 {
+    (void)argc;
     string inputFile;
     inputFile = argv[1];
 
@@ -125,7 +126,7 @@ int main( int argc, const char* argv[] )
 
     auto runTime = std::chrono::duration_cast<std::chrono::nanoseconds>(clockEnd - clockStart);
 
-    //cout << "runtime = " << runTime.count() << endl;
+    cout << "runtime = " << runTime.count() << " nanoseconds." << endl;
 
     for (int i = 0; i < vertexIndex; i++) 
     {
