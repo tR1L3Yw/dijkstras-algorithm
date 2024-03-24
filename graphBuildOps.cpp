@@ -7,7 +7,7 @@ graphDW::graphDW( int nV ) {
     buildIndex = 0;
     graphVertices = new Vertex*[nV];
 }
-
+ 
 void graphDW::addVertex( Vertex* inVertex ) {
     graphVertices[buildIndex] = inVertex;
     buildIndex++;
