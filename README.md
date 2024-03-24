@@ -24,3 +24,18 @@ MINIMUM HEAP ABSTRACTION
 a. MinHeap Total Complexity: O(log(N)) * O(1) = O(log(N))
 
 
+GRAPH BUILD AND OPERATION
+- single class graphDW (Directed + Weighted graph)
+- graph abstraction achieved via dynamic array of pointers to Vertex instances (defined in graphComp)
+
+1. graphDW Class: This class defines a Weighted Directed graph as an object with attributes defined in graphComp and used in functions for the build of our final graph, along with its description, and operations. With a set
+number of vertices we can construct our graph by calling the add vertex function from our driver to populate the dereferenced dynamic array of vertices without need of resizing. Finally dijkstras algroithm navigates the graph in search 
+of the shortest path between passed argument vertices making use of getVertexIndex and member functions attributed to the MinHeap class.
+
+DRIVER
+- performes 2 full input file reads to 1) size a dynamically allocated 2D-array of edges and 2) populate VertexTrack dynamic array and each elements identifying attributes
+- creates and populates dynamic array of vertex pointers and element attributes including a 2-row 2D-array attribute of edges to respective sinks or sources; these vertices have indices identical to their VertexTrack list ids
+- creates graphDW object and populates vertex list attribute
+- calls dijkstra's algorithm as graphDW member funtion
+- logs time in nanoseconds for loading and processing of aformentioned procedures for cout display
+- cleans memory dynamicalyl allocated in driver procedures
